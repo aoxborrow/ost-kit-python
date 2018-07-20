@@ -91,24 +91,15 @@ class OSTKitEndpoint(OSTKitBase):
         # API url for OST Kit Alpha
         request_url = self.api_url + endpoint
 
-        print(string_to_sign)
-        print(method)
-        print(request_url)
-        print(params)
-
-        try:
-            if method == 'get':
-                # GET request: params are in querystring
-                r = requests.get(url=request_url, params=params)
-            else:
-                # POST request: must set 'data' parameter to form-encode POST body
-                r = requests.post(url=request_url, data=params)
-        except requests.exceptions.RequestException as e:
-            print e
-            return {}
+        if method == 'get':
+            # GET request: params are in querystring
+            r = requests.get(url=request_url, params=params)
         else:
-            # parse response json
-            return r.json()
+            # POST request: parms are in form-encoded POST body
+            r = requests.post(url=request_url, data=params)
+
+        # parse response json
+        return r.json()
 
 
 class UsersEndpoint(OSTKitEndpoint):
