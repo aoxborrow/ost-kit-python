@@ -1,7 +1,7 @@
 # ost-kit-python
 [![PyPI version](https://badge.fury.io/py/ost-kit-python.svg)](https://badge.fury.io/py/ost-kit-python)
 
-An unofficial [OST Kit API](https://dev.ost.com/) wrapper for Python. Supports all functionality of OST Kit API v1.1.
+An unofficial [OST Kit API](https://dev.ost.com/) wrapper for Python 2/3. Supports all functionality of OST Kit API v1.1.
 
 # Installation
 

@@ -1,8 +1,8 @@
 import hashlib
 import hmac
 import time
-import urllib
 import requests
+import urllib3
 
 # USAGE:
 # instantiate OST Kit with API credentials
@@ -77,13 +77,13 @@ class OSTKitEndpoint(OSTKitBase):
         params.update(auth_params)
 
         # build alphabetically sorted querystring
-        querystring = urllib.urlencode(sorted(params.items()))
+        querystring = urllib3.request.urlencode(sorted(params.items()))
 
         # sign our request using the endpoint plus all the params
         string_to_sign = endpoint + '?' + querystring
 
         # SHA256 hash the request using our secret key
-        signature = hmac.new(self.api_secret, msg=string_to_sign, digestmod=hashlib.sha256).hexdigest()
+        signature = hmac.new(self.api_secret.encode('utf-8'), msg=string_to_sign.encode('utf-8'), digestmod=hashlib.sha256).hexdigest()
 
         # now add our signature to request params
         params['signature'] = signature
