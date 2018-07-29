@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="ost-kit-python",
-    version="0.0.3",
+    version="0.0.4",
     author="Aaron Oxborrow",
     description="OST Kit API wrapper for Python",
     long_description=long_description,

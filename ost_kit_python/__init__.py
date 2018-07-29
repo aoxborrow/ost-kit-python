@@ -150,7 +150,7 @@ class AirdropsEndpoint(OSTKitEndpoint):
         # required params
         params = {
             'amount': amount,
-            'user_ids': user_ids if isinstance(user_ids, basestring) else ",".join(user_ids),  # allows string or list
+            'user_ids': ",".join(user_ids) if isinstance(user_ids, (list, tuple)) else user_ids,  # allows string or list
         }
 
         # merge additional params
